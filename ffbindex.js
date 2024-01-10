@@ -1,4 +1,4 @@
-import {loadMissionShare} from './ffbMissionShare.js'
+import {loadMissionShare} from './ffbMissionShare.js';
 
 (async function () {
     loadMissionShare();
