@@ -12,7 +12,7 @@ function addShareButtonsToAll () {
  * @param {string} id //missions Id
  */
 function addShareButton (id) {
-    $('#mission_list a[id=alarm_button_' + id + ']').before(`<a id="ffbMS_btn_${id}" class="btn btn-xs btn-success ffbMS-btn" title="Einsatz im Verband freigeben"><img class="icon icons8-Share" src="/images/icons8-share.svg" width="12" height="12"></a>`);
+    $('#mission_list div[id=mission_panel_heading_' + id + ']:not(:has(a.ffbMS-btn])) a[id=alarm_button_' + id + ']').before(`<a id="ffbMS_btn_${id}" class="btn btn-xs btn-success ffbMS-btn" title="Einsatz im Verband freigeben"><img class="icon icons8-Share" src="/images/icons8-share.svg" width="12" height="12"></a>`);
 };
 
 /**
@@ -23,7 +23,7 @@ export async function loadMissionShare() {
 
     $('body').on('click','.ffbMS-btn', async function share() {
         const id = /(?<i>\d+)/g.exec(this.id).groups.i;
-        this.remove();
+        $(this).hide();
         $.get('/missions/' + id + '/alliance');
     });
 
