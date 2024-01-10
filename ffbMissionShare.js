@@ -12,7 +12,7 @@ function addShareButtonsToAll () {
  * @param {string} id //missions Id
  */
 function addShareButton (id) {
-    $('#mission_list div#mission_panel_heading_' + id + ':not(:has(a.ffbMS-btn)) a#alarm_button_' + id).before(`<a id="ffbMS_btn_${id}" class="btn btn-xs btn-success ffbMS-btn" title="Einsatz im Verband freigeben"><img class="icon icons8-Share" src="/images/icons8-share.svg" width="12" height="12"></a>`);
+    $('#mission_list div#mission_panel_' + id + ':not(.panel-success,:has(a.ffbMS-btn)) a#alarm_button_' + id).before(`<a id="ffbMS_btn_${id}" class="btn btn-xs btn-success ffbMS-btn" title="Einsatz im Verband freigeben"><img class="icon icons8-Share" src="/images/icons8-share.svg" width="12" height="12"></a>`);
 };
 
 /**
