@@ -151,7 +151,9 @@
                     "Werkfeuerwehr-Ausbildung",
                     "Intensivpflege",
                     "NEA200 Fortbildung",
-                    "Drohnen-Schulung"];
+                    "Drohnen-Schulung",
+                    "Feuerwehr-Verpflegungseinheit",
+                    "Verpflegungshelfer"];
                 break;
             case '3':
                 options = ["Notarzt-Ausbildung",
