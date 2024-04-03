@@ -210,7 +210,7 @@ function addModal() {
     <div class="modal fade bd-example-modal-lg in" id="${modulePrefix}ViolationsModal" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding-right: 15px;">
         <div class="modal-dialog modal-lg" role="document"
-            style="width: 1000px; height: 90%; margin-top: auto; margin-bottom: auto;">
+            style="max-width: 1000px; height: 90%; margin-top: auto; margin-bottom: auto;">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -223,27 +223,11 @@ function addModal() {
                 <div class="modal-body" id="${modulePrefix}ViolationsModalBody" style="overflow-y: auto;">
                     <!-- Neuer Eintrag -->
                     <div id="${modulePrefix}NewEntry" style="display: grid;">
-                        <div>
-                            <div class="col-sm-2">
-                                <strong>Aktion</strong>
-                            </div>
-                            <div class="col-sm-3">
-                                <strong>Spieler</strong>
-                            </div>
-                            <div class="col-sm-3">
-                                <strong>Grund</strong>
-                            </div>
-                            <div class="col-sm-2">
-                                <strong>Dauer</strong>
-                            </div>
-                            <div class="col-sm-2">
-                                <strong>Chatban</strong>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="col-sm-2">
-                                <select name="action" id="${modulePrefix}Actions"
-                                    class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="title"><strong>Aktion</strong></div>
+                            <div class="content">
+                                <select name="action" id="${modulePrefix}Actions" class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block">
                                     <option value="0" selected></option>
                                     <option value="Hinweis">Hinweis</option>
                                     <option value="Ermahnung">Ermahnung</option>
@@ -251,21 +235,27 @@ function addModal() {
                                     <option value="Verweis">Verweis</option>
                                 </select>
                             </div>
-                            <div class="col-sm-3">
-                                <select name="player" id="${modulePrefix}Players"
-                                    class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="title"><strong>Spieler</strong></div>
+                            <div class="content">
+                                <select name="player" id="${modulePrefix}Players" class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block">
                                     <option value="0" selected></option>
                                 </select>
                             </div>
-                            <div class="col-sm-3">
-                                <input type="text" id="${modulePrefix}ReasonInput" class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block"
-                                    list="${modulePrefix}Reasons" maxlength="50" value="">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="title"><strong>Grund</strong></div>
+                            <div class="content">
+                                <input type="text" id="${modulePrefix}ReasonInput" class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block" list="${modulePrefix}Reasons" maxlength="50" value="">
                                 <datalist id="${modulePrefix}Reasons">
                                 </datalist>
                             </div>
-                            <div class="col-sm-2">
-                                <select name="duration" id="${modulePrefix}Durations"
-                                    class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block">
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="title"><strong>Dauer</strong></div>
+                            <div class="content">
+                                <select name="duration" id="${modulePrefix}Durations" class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Required ${modulePrefix}Block">
                                     <option value="0"></option>
                                     <option value="7">7 Tage</option>
                                     <option value="14">14 Tage</option>
@@ -274,7 +264,10 @@ function addModal() {
                                     <option value="180">180 Tage</option>
                                 </select>
                             </div>
-                            <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="title"><strong>Chatban</strong></div>
+                            <div class="content">
                                 <select name="chatban" id="${modulePrefix}Chatban" class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Block">
                                     <option value="0" selected></option>
                                     <option value="300">5 Minuten</option>
@@ -289,8 +282,9 @@ function addModal() {
                                 </select>
                             </div>
                         </div>
+                    </div>
                         <div>
-                            <div class="col-sm-1" style="margin-top: 15px; text-align: right">Betreff:</div>
+                            <div class="col-sm-1" style="margin-top: 15px;">Betreff:</div>
                             <div class="col-sm-11" id="${modulePrefix}SubjectInputField" style="margin-top: 15px; display: none;">
                                 <textarea name="subject" id="${modulePrefix}SubjectTextarea" placeholder="Betreff..."
                                     class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Block ${modulePrefix}Required" style="resize: none" rows="1"
@@ -307,7 +301,7 @@ function addModal() {
                             <input id="${modulePrefix}SubjectDummy" type="hidden" value="" class="${modulePrefix}Required">
                         </div>
                         <div>
-                            <div class="col-sm-1" style="margin-top: 15px; text-align: right">
+                            <div class="col-sm-1" style="margin-top: 15px;">
                                 Nachricht:
                                 <span class="glyphicon glyphicon-info-sign pull-left" id="${modulePrefix}Tooltip"></span>
                             </div>
