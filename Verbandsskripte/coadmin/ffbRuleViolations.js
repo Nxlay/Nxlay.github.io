@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rule Violations
 // @namespace    http://tampermonkey.net/
-// @version      1.1.0
+// @version      1.1.1
 // @description  try to take over the world!
 // @author       You
 // @match        https://www.leitstellenspiel.de
@@ -18,7 +18,7 @@
 
 const modulePrefix = 'pm';
 const rights = 'alliance_coadmin';
-const version = '1.1.0';
+const version = '1.1.1';
 
 /** -------------------
  *  Constants and globals
@@ -487,9 +487,9 @@ function createEntryElement(name, id, action) {
     tr.classList.add((action.e < currentTime) ? "expired" : "ongoing");
     tr.innerHTML = `
         <td><span class="badge ${actionToColor(action.a, 'badge')}">${action.a}</span></td>
-        <td title="${id}"><a href="/profile/${id}">${name}</a></td>
+        <td title="${id}"><a class="lightbox-open" href="/profile/${id}">${name}</a></td>
         <td>${action.r}</td>
-        <td title="${action.ci}"><a href="/profile/${action.ci}">${action.cn}</a></td>
+        <td title="${action.ci}"><a class="lightbox-open" href="/profile/${action.ci}">${action.cn}</a></td>
         <td><span hidden>${action.d}</span>${formatDate(action.d)}</td>
         <td><span hidden>${action.e}</span>${formatDate(action.e)}</td>
     `;
