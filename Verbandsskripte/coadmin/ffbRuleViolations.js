@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rule Violations
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @version      1.1.2
 // @description  try to take over the world!
 // @author       You
 // @match        https://www.leitstellenspiel.de
@@ -18,7 +18,7 @@
 
 const modulePrefix = 'pm';
 const rights = 'alliance_coadmin';
-const version = '1.1.1';
+const version = '1.1.2';
 
 /** -------------------
  *  Constants and globals
@@ -75,7 +75,7 @@ function textReplacements() {
                 case 'Hinweis': return 'Diese Nachricht dient nur als Hinweis. Gibt in Zukunft besser acht sonst folgen Konsequenzen!';
                 case 'Ermahnung': return 'Das ist deine erste Ermahnung. Bei bei weiteren Regelverstößen musst du mit weiteren Konsequenzen rechnen!';
                 case 'Verwarnung': return 'Das ist deine letzte Chance. Beim nächsten Regelverstoß geht der Flieger aufs Festland!';
-                case 'Verweis': return 'Schade, dass wir dich verabschieden müssen. Bitte anschnallen! *Der Flieger startet*';
+                case 'Verweis': return 'Schade, dass wir uns von dir verabschieden müssen. Bitte anschnallen! *Der Flieger startet*';
                 default: return '';
             }
         })(),
@@ -87,8 +87,8 @@ function textReplacements() {
     }
 }
 const messageTemplates = {
-    'Standard':         [`%AKTION%: %GRUND%`, `Hallo %SPIELER%,\ndu hast gegen die Verbandsregeln verstoßen: %GRUND%\n\nWir bitten dich darum, dir die Regeln dazu nochmal durchzulesen und hier zu bestätigen.\nBei weiteren Verstößen musst du mit Konsequenzen rechnen!\n\nViel Grüße\ndas Admin/Co-Admin Team`],
-    'NoGo-Fahrzeuge':   [`%AKTION%: NoGo-Fahrzeuge`, `Hallo %SPIELER%,\ndu hast gegen die Verbandsregeln verstoßen und ein NoGo-Fahrzeug zu einem Verbandseinsatz geschickt.\n\nEinsätze ab 8.000 Credits beinhalten die Regel der NoGo-Fahrzeuge.\n(NoGo-Fahrzeuge sind bei diesen Einsätzen ELW1, ELW2, AB-Einsatzleitung, FüKw, ELW1/Drohne und ELW2/Drohne)\n\nWir bitten dich darum, dir die Regeln dazu nochmal durchzulesen und hier zu bestätigen.\nBei weiteren Verstößen musst du mit Konsequenzen rechnen!\n\nViel Grüße\ndas Admin/Co-Admin Team`],
+    'Standard':         [`%AKTION%: %GRUND%`, `Hallo %SPIELER%,\ndu hast gegen die Verbandsregeln verstoßen: %GRUND%\n\nWir bitten dich darum, dir die Regeln dazu nochmal durchzulesen und hier zu bestätigen.\nBei weiteren Verstößen musst du mit Konsequenzen rechnen!\n\nViele Grüße\ndas Admin/Co-Admin Team`],
+    'NoGo-Fahrzeuge':   [`%AKTION%: NoGo-Fahrzeuge`, `Hallo %SPIELER%,\ndu hast gegen die Verbandsregeln verstoßen und ein NoGo-Fahrzeug zu einem Verbandseinsatz geschickt.\n\nEinsätze ab 8.000 Credits beinhalten die Regel der NoGo-Fahrzeuge.\n(NoGo-Fahrzeuge sind bei diesen Einsätzen ELW1, ELW2, AB-Einsatzleitung, FüKw, ELW1/Drohne und ELW2/Drohne)\n\nWir bitten dich darum, dir die Regeln dazu nochmal durchzulesen und hier zu bestätigen.\nBei weiteren Verstößen musst du mit Konsequenzen rechnen!\n\nViele Grüße\ndas Admin/Co-Admin Team`],
     //'Sprechwünsche':    [``, ``],
 }
 
@@ -292,7 +292,7 @@ function addModal() {
                                 <textarea name="subject" id="${modulePrefix}SubjectTextarea" placeholder="Betreff..."
                                     class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Block ${modulePrefix}Required" style="resize: none" rows="1"
                                     oninput="this.value = this.value.replace(/\\n/g,'')"
-                                    maxlength="50">%AKTION%: %GRUND%</textarea>
+                                    maxlength="50" spellcheck="false">%AKTION%: %GRUND%</textarea>
                             </div>
                             <div class="col-sm-11" id="${modulePrefix}SubjectPreviewField" style="margin-top: 15px; display: block;">
                                 <div id="${modulePrefix}SubjectBorder" class="panel panel-default" style="margin-bottom: 0px">
@@ -312,7 +312,7 @@ function addModal() {
                                 style="margin-top: 15px; margin-bottom: 20px; display: none;">
                                 <textarea name="message" id="${modulePrefix}MessageTextarea" placeholder="Nachricht..."
                                     class="form-control ${modulePrefix}UpdatePreview ${modulePrefix}Block ${modulePrefix}Required" style="resize: none"
-                                    rows="11"></textarea>
+                                    rows="11" spellcheck="false"></textarea>
                             </div>
                             <div class="col-sm-11" id="${modulePrefix}MessagePreviewField" style="margin-top: 15px; display: block;">
                                 <div id="${modulePrefix}MessageBorder" class="panel panel-default">
@@ -562,6 +562,7 @@ function resetInputs() {
     [S.subject()[0].value, S.message()[0].value] = messageTemplates['Standard'];
 
     updatePreview();
+    checkEnableSaveButton();
 }
 function toggleInput (enable) {
     S.block().prop('disabled', !enable);
