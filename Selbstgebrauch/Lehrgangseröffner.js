@@ -192,7 +192,8 @@
                     "Fachgruppe Wasserschaden/Pumpen",
                     "Fachgruppe Schwere Bergung",
                     "Fachgruppe Elektroversorgung",
-                    "Trupp Unbemannte Luftfahrtsysteme"];
+                    "Trupp Unbemannte Luftfahrtsysteme",
+                    "Führung und Kommunikation"];
                 break;
             default:
                 options = [];
