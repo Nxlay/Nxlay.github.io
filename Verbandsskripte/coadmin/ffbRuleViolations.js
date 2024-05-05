@@ -89,6 +89,7 @@ function textReplacements() {
 const messageTemplates = {
     'Standard':         [`%AKTION%: %GRUND%`, `Hallo %SPIELER%,\ndu hast gegen die Verbandsregeln verstoßen: %GRUND%\n\nWir bitten dich darum, dir die Regeln dazu nochmal durchzulesen und hier zu bestätigen.\nBei weiteren Verstößen musst du mit Konsequenzen rechnen!\n\nViele Grüße\ndas Admin/Co-Admin Team`],
     'NoGo-Fahrzeuge':   [`%AKTION%: NoGo-Fahrzeuge`, `Hallo %SPIELER%,\ndu hast gegen die Verbandsregeln verstoßen und ein NoGo-Fahrzeug zu einem Verbandseinsatz geschickt.\n\nEinsätze ab 8.000 Credits beinhalten die Regel der NoGo-Fahrzeuge.\n(NoGo-Fahrzeuge sind bei diesen Einsätzen ELW1, ELW2, AB-Einsatzleitung, FüKw, ELW1/Drohne und ELW2/Drohne)\n\nWir bitten dich darum, dir die Regeln dazu nochmal durchzulesen und hier zu bestätigen.\nBei weiteren Verstößen musst du mit Konsequenzen rechnen!\n\nViele Grüße\ndas Admin/Co-Admin Team`],
+    'RD+SW':            [`%AKTION%: Rettungsdienst + Sprechwünsche`, `Hallo %SPIELER%,\ndu hast gegen die Verbandsregeln verstoßen und Patienten eines Verbandseinsatzes bearbeitet, bei dem der Rettungsdienst vom Freigebende gesperrt wurde und/oder deine Sprechwünsche nicht bearbeitet.\n\nBitte achte deshalb in Zukunft auf die Rückmeldungen im Einsatzfenster und schicke bei freiem Rettungsdienst einen richtig eingestellten ELW 1 (SEG) bei deinem Rettungsdienst mit zum Einsatz.\n(siehe Bauschema > SEG unter https://docs.google.com/document/d/1vlHlPrmPd2WQSBC4GhcWUeHMiJiYNrLDNonBqwQ1Y0s/edit)\n\nWir bitten dich, dir die Regeln dazu nochmal durchzulesen und hier zu bestätigen.\nBei weiteren Verstößen musst du mit Konsequenzen rechnen!\n\nViele Grüße\ndas Admin/Co-Admin Team`],
     //'Sprechwünsche':    [``, ``],
 }
 
@@ -468,7 +469,8 @@ async function addDataTableLibrary() {
 }
 function initializeDataTable() {
     dataTable = new DataTable(`#${modulePrefix}OverviewTable`, {
-        "order": [[4, 'desc']]
+        "order": [[4, 'desc']],
+        pageLength: 50
     });
 }
 function initializeTableEntries() {
@@ -476,7 +478,9 @@ function initializeTableEntries() {
     dataTable.clear();
     userfiles.forEach(player => {
         player.i.forEach(action => {
-            entries.push(createEntryElement(player.pn, player.pi, action));
+            if (action.e > new Date().getTime()) {
+                entries.push(createEntryElement(player.pn, player.pi, action));
+            }
         });
     });
     dataTable.rows.add(entries).draw();
