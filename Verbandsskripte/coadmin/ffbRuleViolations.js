@@ -779,6 +779,9 @@ function formatDate(time) {
         S.required().on('input', function () {
             checkEnableSaveButton();
         });
+        S.playerSelection().on('change', function () {
+            dataTable.search(S.player().text()).draw();
+        });
 
         // If all previous steps were successful add open button
         addMenuEntry();
