@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Lehrgangseröffner
-// @version      1.3.2
+// @version      1.3.3
 // @description  Eröffnet Lehrgänge an Verbandsschulen
 // @match        https://www.leitstellenspiel.de/schoolings
 // @match        https://www.leitstellenspiel.de/schoolings/
@@ -135,7 +135,7 @@
         var options = [];
 
         switch (selectedSchool) {
-            case '1':
+            case '1':   // Feuerwehrschule
                 options = ["GW-Messtechnik Lehrgang",
                     "GW-Gefahrgut Lehrgang",
                     "Höhenrettung Lehrgang",
@@ -153,9 +153,10 @@
                     "NEA200 Fortbildung",
                     "Drohnen-Schulung",
                     "Feuerwehr-Verpflegungseinheit",
-                    "Verpflegungshelfer"];
+                    "Verpflegungshelfer"
+                ];
                 break;
-            case '3':
+            case '3':   // Rettungsschule
                 options = ["Notarzt-Ausbildung",
                     "LNA-Ausbildung",
                     "OrgL-Ausbildung",
@@ -167,9 +168,13 @@
                     "Intensivpflege",
                     "SEG Drohne",
                     "Betreuungsdienst",
-                    "Verpflegungshelfer"];
+                    "Verpflegungshelfer",
+                    "Höhenretter",
+                    "Windenoperator",
+                    "Einsatzleiter Bergrettung"
+                ];
                 break;
-            case '8':
+            case '8':   // Polizeischule
                 options = ["Zugführer (leBefKw)",
                     "Hundertschaftsführer (FüKw)",
                     "Polizeihubschrauber",
@@ -181,9 +186,11 @@
                     "Brandbekämpfung",
                     "Kriminalpolizei",
                     "Dienstgruppenleitung",
-                    "Reiterstaffel"];
+                    "Reiterstaffel",
+                    "Windenoperator"
+                ];
                 break;
-            case '10':
+            case '10':  // THW Bundsschule
                 options = ["Zugtrupp",
                     "Fachgruppe Räumen",
                     "Fachgruppe Wassergefahren",
@@ -193,7 +200,8 @@
                     "Fachgruppe Schwere Bergung",
                     "Fachgruppe Elektroversorgung",
                     "Trupp Unbemannte Luftfahrtsysteme",
-                    "Führung und Kommunikation"];
+                    "Führung und Kommunikation"
+                ];
                 break;
             default:
                 options = [];
