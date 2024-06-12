@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rule Violations
 // @namespace    http://tampermonkey.net/
-// @version      1.1.2
+// @version      1.2.0
 // @description  try to take over the world!
 // @author       You
 // @match        https://www.leitstellenspiel.de
@@ -18,7 +18,7 @@
 
 const modulePrefix = 'pm';
 const rights = 'alliance_coadmin';
-const version = '1.1.2';
+const version = '1.2.0';
 
 /** -------------------
  *  Constants and globals
@@ -564,6 +564,7 @@ function resetInputs() {
     S.standard().prop('selected', true);
     S.reason().val('');
     [S.subject()[0].value, S.message()[0].value] = messageTemplates['Standard'];
+    dataTable.search('');
 
     updatePreview();
     checkEnableSaveButton();
