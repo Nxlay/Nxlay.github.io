@@ -564,7 +564,7 @@ function resetInputs() {
     S.standard().prop('selected', true);
     S.reason().val('');
     [S.subject()[0].value, S.message()[0].value] = messageTemplates['Standard'];
-    dataTable.search('');
+    if (dataTable != undefined) dataTable.search('');
 
     updatePreview();
     checkEnableSaveButton();
