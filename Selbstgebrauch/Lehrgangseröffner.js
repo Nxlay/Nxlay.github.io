@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Lehrgangseröffner
-// @version      1.3.3
+// @version      1.4.0
 // @description  Eröffnet Lehrgänge an Verbandsschulen
 // @match        https://www.leitstellenspiel.de/schoolings
 // @match        https://www.leitstellenspiel.de/schoolings/
@@ -22,6 +22,7 @@
                         <option value="3">Rettungsschule</option>
                         <option value="8">Polizeischule</option>
                         <option value="10">THW Bundesschule</option>
+                        <option value="27">Schule für Seenotrettung</option>
                    </select>
                 </div>
                 <div class="col-sm-2">
@@ -200,9 +201,15 @@
                     "Fachgruppe Schwere Bergung",
                     "Fachgruppe Elektroversorgung",
                     "Trupp Unbemannte Luftfahrtsysteme",
-                    "Führung und Kommunikation"
+                    "Fachzug Führung und Kommunikation"
                 ];
                 break;
+            case '27': // Schule für Seenotrettung
+                options = ["Seenotretter",
+                    "Hubschrauberpilot (Seenotrettung)",
+                    "Windenoperator",
+                    "Wasserrettungsausbildung für Notfallsanitäter"
+                ]
             default:
                 options = [];
                 break;
