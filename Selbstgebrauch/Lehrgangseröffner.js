@@ -209,7 +209,8 @@
                     "Hubschrauberpilot (Seenotrettung)",
                     "Windenoperator",
                     "Wasserrettungsausbildung für Notfallsanitäter"
-                ]
+                ];
+                break;
             default:
                 options = [];
                 break;
