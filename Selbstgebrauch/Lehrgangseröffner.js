@@ -154,7 +154,8 @@
                     "NEA200 Fortbildung",
                     "Drohnen-Schulung",
                     "Feuerwehr-Verpflegungseinheit",
-                    "Verpflegungshelfer"
+                    "Verpflegungshelfer",
+                    "Bahnrettung"
                 ];
                 break;
             case '3':   // Rettungsschule
