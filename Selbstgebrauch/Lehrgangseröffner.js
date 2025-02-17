@@ -189,7 +189,8 @@
                     "Kriminalpolizei",
                     "Dienstgruppenleitung",
                     "Reiterstaffel",
-                    "Windenoperator"
+                    "Windenoperator",
+                    "Lautsprecheroperator"
                 ];
                 break;
             case '10':  // THW Bundsschule
